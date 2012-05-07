@@ -30,8 +30,7 @@
 		2323EEA81556E0410061FB60 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2323EE921556E0410061FB60 /* AFXMLRequestOperation.m */; };
 		2323EEA91556E0410061FB60 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2323EE931556E0410061FB60 /* UIImageView+AFNetworking.h */; };
 		2323EEAA1556E0410061FB60 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2323EE941556E0410061FB60 /* UIImageView+AFNetworking.m */; };
-		2323EEBC1556E1900061FB60 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2323EEBA1556E1900061FB60 /* JSONKit.h */; };
-		2323EEBD1556E1900061FB60 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2323EEBB1556E1900061FB60 /* JSONKit.m */; };
+		2323EEC01556E1F40061FB60 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2323EEBF1556E1F40061FB60 /* libJSONKit.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,8 +58,7 @@
 		2323EE921556E0410061FB60 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFXMLRequestOperation.m; path = AFNetworking/AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		2323EE931556E0410061FB60 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		2323EE941556E0410061FB60 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		2323EEBA1556E1900061FB60 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = JSONKit/JSONKit/JSONKit.h; sourceTree = "<group>"; };
-		2323EEBB1556E1900061FB60 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = JSONKit/JSONKit/JSONKit.m; sourceTree = "<group>"; };
+		2323EEBF1556E1F40061FB60 /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONKit.a; path = "JSONKit/build/Release-iphoneos/libJSONKit.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2323EEC01556E1F40061FB60 /* libJSONKit.a in Frameworks */,
 				2323EE6F1556DFCB0061FB60 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,8 +99,6 @@
 				2323EE921556E0410061FB60 /* AFXMLRequestOperation.m */,
 				2323EE931556E0410061FB60 /* UIImageView+AFNetworking.h */,
 				2323EE941556E0410061FB60 /* UIImageView+AFNetworking.m */,
-				2323EEBA1556E1900061FB60 /* JSONKit.h */,
-				2323EEBB1556E1900061FB60 /* JSONKit.m */,
 				2323EE6D1556DFCB0061FB60 /* Frameworks */,
 				2323EE6C1556DFCB0061FB60 /* Products */,
 			);
@@ -118,6 +115,7 @@
 		2323EE6D1556DFCB0061FB60 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2323EEBF1556E1F40061FB60 /* libJSONKit.a */,
 				2323EE6E1556DFCB0061FB60 /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -142,7 +140,6 @@
 				2323EEA51556E0410061FB60 /* AFURLConnectionOperation.h in Headers */,
 				2323EEA71556E0410061FB60 /* AFXMLRequestOperation.h in Headers */,
 				2323EEA91556E0410061FB60 /* UIImageView+AFNetworking.h in Headers */,
-				2323EEBC1556E1900061FB60 /* JSONKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,7 +204,6 @@
 				2323EEA61556E0410061FB60 /* AFURLConnectionOperation.m in Sources */,
 				2323EEA81556E0410061FB60 /* AFXMLRequestOperation.m in Sources */,
 				2323EEAA1556E0410061FB60 /* UIImageView+AFNetworking.m in Sources */,
-				2323EEBD1556E1900061FB60 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,7 +214,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					armv6,
+					armv7,
+				);
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -232,7 +231,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -241,14 +240,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					armv6,
+					armv7,
+				);
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -260,6 +262,7 @@
 				DSTROOT = /tmp/AFNetworkingLibrary.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AFNetworking/AFNetworkingLibrary-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/**";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -272,6 +275,7 @@
 				DSTROOT = /tmp/AFNetworkingLibrary.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AFNetworking/AFNetworkingLibrary-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/**";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
