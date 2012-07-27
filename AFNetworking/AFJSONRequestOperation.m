@@ -121,7 +121,8 @@ static dispatch_queue_t json_request_operation_processing_queue() {
             self.responseJSON = [[JSONDecoder decoder] objectWithData:self.responseData error:&error];
         }
 #else
-        self.responseJSON = [[JSONDecoder decoder] objectWithData:self.responseData error:&error];
+        self.responseJSON = [[JSONDecoder decoderWithParseOptions:JKParseOptionLooseUnicode]
+                             objectWithData:self.responseData error:&error];
 #endif
         
         self.error = error;
