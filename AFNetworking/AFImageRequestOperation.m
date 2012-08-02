@@ -90,6 +90,16 @@ static dispatch_queue_t image_request_operation_processing_queue() {
                         failure(operation.request, operation.response, operation.error);
                     });
                 }
+            } else if ([[operation.response.allHeaderFields objectForKey:@"Thumbs"] isEqual:@"NOK"]) {
+                DLog(@"Thumbs is NOK for %@", operation.request.URL);
+                if (failure) {
+                    dispatch_async(dispatch_get_main_queue(), ^(void) {
+                        NSError *thumbnailError = [NSError errorWithDomain:@"SAPO::Banca"
+                                                                      code:500
+                                                                  userInfo:[NSDictionary dictionaryWithObject:@"Thumbs is NOK" forKey:NSLocalizedDescriptionKey]];
+                        failure(operation.request, operation.response, thumbnailError);
+                    });
+                }
             } else {                
                 UIImage *image = operation.responseImage;
                 
