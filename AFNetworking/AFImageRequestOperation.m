@@ -91,7 +91,7 @@ static dispatch_queue_t image_request_operation_processing_queue() {
                     });
                 }
             } else if ([[operation.response.allHeaderFields objectForKey:@"Thumbs"] isEqual:@"NOK"]) {
-                DLog(@"Thumbs is NOK for %@", operation.request.URL);
+                DLog(@"UNSUCCESSFUL thumbnail request:\nNOK - %@", operation.request.URL);
                 if (failure) {
                     dispatch_async(dispatch_get_main_queue(), ^(void) {
                         NSError *thumbnailError = [NSError errorWithDomain:@"SAPO::Banca"
@@ -101,6 +101,7 @@ static dispatch_queue_t image_request_operation_processing_queue() {
                     });
                 }
             } else {                
+                DLog(@"Successful thumbnail request:\n%@", operation.request.URL);
                 UIImage *image = operation.responseImage;
                 
                 if (imageProcessingBlock) {
